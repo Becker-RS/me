@@ -33,11 +33,12 @@ jobs:
         run: python builder/main.py
         env:
           GITHUB_USERNAME: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.PAGES_TOKEN }}  # Added token for API auth
           
-      - name: Setup Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v1
         with:
-          token: ${{ secrets.PAGES_TOKEN }} # PAT with Pages permissions
+          token: ${{ secrets.PAGES_TOKEN }}
           enablement: true
           
       - name: Deploy to GitHub Pages
